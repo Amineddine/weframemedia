@@ -1,89 +1,105 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-
-const projects = [
-    { id: 1, name: 'Brand Campaign', tagline: 'Elevating Visual Stories', category: 'Commercial' },
-    { id: 2, name: 'Commercial Shoot', tagline: 'Cinematic Excellence', category: 'Commercial' },
-    { id: 3, name: 'Documentary', tagline: 'Authentic Narratives', category: 'Documentary' },
-    { id: 4, name: 'Music Video', tagline: 'Creative Expression', category: 'Music' },
-    { id: 5, name: 'Corporate Film', tagline: 'Professional Vision', category: 'Corporate' },
-    { id: 6, name: 'Short Film', tagline: 'Storytelling Mastery', category: 'Film' },
-    { id: 7, name: 'Product Launch', tagline: 'Impactful Reveals', category: 'Commercial' },
-    { id: 8, name: 'Event Coverage', tagline: 'Capturing Moments', category: 'Events' },
-    { id: 9, name: 'Brand Identity', tagline: 'Visual Systems', category: 'Branding' },
-    { id: 10, name: 'Social Content', tagline: 'Engaging Audiences', category: 'Digital' },
-    { id: 11, name: 'Animation', tagline: 'Motion Graphics', category: 'Animation' },
-    { id: 12, name: 'Podcast Production', tagline: 'Audio Excellence', category: 'Podcast' },
-];
+import { projects } from '@/data/projects';
 
 export default function WorksGridPage() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
+    const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
     return (
-        <div className="min-h-screen pt-32 pb-20">
+        <div className="min-h-screen bg-black text-white">
             <div className="container-custom">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-16"
-                >
-                    <h1 className="text-display font-serif mb-6">Our Work</h1>
-                    <p className="text-body-large text-muted max-w-2xl">
-                        A collection of our finest projects. Each one crafted with passion,
-                        precision, and a deep understanding of our clients&apos; vision.
-                    </p>
-                </motion.div>
+                {/* Header Filter Section - Centered */}
+                <div className="h-[50vh] flex flex-col justify-center">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col md:flex-row justify-between items-end gap-8 w-full"
+                    >
+                        <div className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight text-white mb-4">
+                            All
+                        </div>
+
+                        {/* Grid/List Toggle (Visual) */}
+                        <div className="flex items-center gap-4 text-sm font-medium text-gray-500 mb-6">
+                            <button
+                                onClick={() => setViewMode('grid')}
+                                className={`hover:text-white transition-colors flex items-center gap-2 ${viewMode === 'grid' ? 'text-white' : ''}`}
+                            >
+                                Grid
+                            </button>
+                            <span>/</span>
+                            <button
+                                onClick={() => setViewMode('list')}
+                                className={`hover:text-white transition-colors flex items-center gap-2 ${viewMode === 'list' ? 'text-white' : ''}`}
+                            >
+                                List
+                            </button>
+                        </div>
+                    </motion.div>
+                </div>
 
                 {/* Projects Grid */}
-                <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    ref={ref}
+                    className={`pb-20 gap-6 ${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'flex flex-col space-y-12'}`}
+                >
                     {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                            transition={{ delay: index * 0.05, duration: 0.5 }}
+                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            className="w-full"
                         >
                             <Link
-                                href={`/works/${project.id}`}
-                                className="group block"
+                                href={project.href}
+                                className="group block w-full"
                             >
-                                <div className="project-card relative aspect-[4/5] overflow-hidden rounded-lg bg-card hover-lift">
-                                    {/* Gradient Background */}
-                                    <div className="absolute inset-0 bg-gradient-to-br from-card via-background to-border" />
-
-                                    {/* Category Badge */}
-                                    <div className="absolute top-4 right-4 px-3 py-1 bg-background/80 rounded-full text-xs text-muted">
-                                        {project.category}
+                                <div className={`relative overflow-hidden rounded-2xl bg-[#111] hover-lift ${viewMode === 'grid' ? 'aspect-video' : 'aspect-[21/9]'}`}>
+                                    {/* Video Background */}
+                                    <div className="absolute inset-0">
+                                        <video
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
+                                        >
+                                            <source src={project.video} type="video/mp4" />
+                                        </video>
+                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
                                     </div>
 
-                                    {/* Decorative Element */}
-                                    <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-24 h-24 border border-border/50 rounded-full opacity-30 group-hover:scale-110 transition-transform duration-500" />
+                                    {/* Content Overlay */}
+                                    <div className="absolute bottom-6 left-6 z-10">
+                                        <div className="overflow-hidden">
+                                            <h3 className="text-xl md:text-2xl font-bold text-white transform translate-y-0 transition-transform duration-300">
+                                                {project.name}
+                                            </h3>
+                                        </div>
+                                        <div className="overflow-hidden">
+                                            <p className="text-sm md:text-base text-gray-400 mt-1">
+                                                {project.tagline}
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    {/* Hover Overlay */}
-                                    <div className="project-card-overlay" />
-
-                                    {/* Content */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                                        <h3 className="text-xl font-semibold mb-1 transform group-hover:-translate-y-2 transition-transform duration-300">
-                                            {project.name}
-                                        </h3>
-                                        <p className="text-sm text-muted opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            {project.tagline}
-                                        </p>
-                                    </div>
+                                    {/* Hover Overlay Gradient */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
                                 </div>
                             </Link>
                         </motion.div>
                     ))}
                 </div>
+
+                {/* EXTRA BREATHING ROOM BEFORE FOOTER */}
+                <div style={{ height: '20vh' }} />
             </div>
         </div>
     );

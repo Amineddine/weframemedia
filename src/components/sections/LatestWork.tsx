@@ -4,51 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-
-const projects = [
-    {
-        id: 1,
-        name: 'A Magical Night in 13 Paix',
-        tagline: 'CARTIER',
-        video: '/A Magical Night in 13 Paix  ,CARTIER.mp4',
-        href: '/works/project1',
-    },
-    {
-        id: 2,
-        name: 'Astonishing orange',
-        tagline: 'Hermès',
-        video: '/Astonishing orange  ,Hermès_.mp4',
-        href: '/works/project2',
-    },
-    {
-        id: 3,
-        name: 'Messi and Mahomes',
-        tagline: 'Adidas',
-        video: '/Messi and Mahomes  .Adidas.mp4',
-        href: '/works/project3',
-    },
-    {
-        id: 4,
-        name: 'The 2025 Met Gala',
-        tagline: 'LOUIS VUITTON',
-        video: '/The 2025 Met Gala  ,LOUIS VUITTON.mp4',
-        href: '/works/project4',
-    },
-    {
-        id: 5,
-        name: 'WHY DO IT',
-        tagline: 'NIKE',
-        video: '/WHY DO IT ,NIKE.mp4',
-        href: '/works/project5',
-    },
-    {
-        id: 6,
-        name: 'We Got Now',
-        tagline: 'New Balance',
-        video: '/We Got Now  ,New Balance.mp4',
-        href: '/works/project6',
-    },
-];
+import { projects } from '@/data/projects';
 
 export default function LatestWork() {
     const ref = useRef(null);

@@ -1,259 +1,141 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-
-const introWords = [
-    'No',
-    'matter',
-    'where',
-    'you',
-    'are',
-    'in',
-    'the',
-    'creative',
-    'and',
-    'production',
-    'journey,',
-    'we',
-    'are',
-    'ready',
-    'to',
-    'dive',
-    'in',
-    'and',
-    'get',
-    'to',
-    'work',
-];
+import Link from 'next/link';
+import { ChevronDown } from 'lucide-react';
 
 export default function ContactPage() {
-    const introRef = useRef(null);
-    const formRef = useRef(null);
-    const introInView = useInView(introRef, { once: true, margin: '-100px' });
-    const formInView = useInView(formRef, { once: true, margin: '-50px' });
-
-    const [formData, setFormData] = useState({
-        brandName: '',
-        contactName: '',
-        email: '',
-        phone: '',
-        webSocial: '',
-        budget: '',
-        message: '',
-    });
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Handle form submission
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! We will get back to you soon.');
-    };
-
     return (
-        <div className="min-h-screen pt-32 pb-20">
-            {/* Hero Section */}
-            <div className="container-custom mb-16">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h1 className="text-display font-serif mb-6">Contact</h1>
-                </motion.div>
-            </div>
+        <div className="min-h-screen bg-black text-white pb-48 md:pb-64">
+            <div className="px-6 md:px-12 lg:px-20 w-full">
 
-            {/* Intro Text */}
-            <section ref={introRef} className="container-custom mb-24">
-                <motion.p className="text-headline font-serif leading-relaxed max-w-4xl">
-                    {introWords.map((word, index) => (
-                        <motion.span
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={introInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                            transition={{ delay: index * 0.04, duration: 0.5 }}
-                            className={`inline-block mr-3 ${['creative', 'production', 'dive', 'work'].includes(word)
-                                    ? 'italic text-accent'
-                                    : ''
-                                }`}
-                        >
-                            {word}
-                        </motion.span>
-                    ))}
-                </motion.p>
-            </section>
+                {/* 🔒 NAVBAR OFFSET — DO NOT REMOVE */}
+                {/* This guarantees content starts BELOW the fixed navbar */}
+                <div className="h-[140px] md:h-[160px] lg:h-[180px]" />
 
-            {/* Form Section */}
-            <section ref={formRef} className="container-custom">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-                    {/* Form */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={formInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <h2 className="text-2xl font-serif mb-8">
-                            Fill out our form, or just schedule a call{' '}
-                            <a href="#" className="text-accent hover:underline">
-                                HERE
-                            </a>
-                        </h2>
-
-                        <form onSubmit={handleSubmit} className="space-y-8">
-                            <div>
-                                <input
-                                    type="text"
-                                    name="brandName"
-                                    placeholder="Brand Name"
-                                    value={formData.brandName}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="text"
-                                    name="contactName"
-                                    placeholder="Contact Name"
-                                    value={formData.contactName}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder="Phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <input
-                                    type="text"
-                                    name="webSocial"
-                                    placeholder="Web/Social"
-                                    value={formData.webSocial}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div>
-                                <select
-                                    name="budget"
-                                    value={formData.budget}
-                                    onChange={handleChange}
-                                    className="cursor-pointer"
-                                >
-                                    <option value="">Estimated Budget Range</option>
-                                    <option value="under-10k">Under $10,000</option>
-                                    <option value="10k-25k">$10,000 - $25,000</option>
-                                    <option value="25k-50k">$25,000 - $50,000</option>
-                                    <option value="50k-100k">$50,000 - $100,000</option>
-                                    <option value="100k-plus">$100,000+</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <textarea
-                                    name="message"
-                                    placeholder="Tell us about your project..."
-                                    rows={4}
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <button type="submit" className="btn-primary w-full justify-center">
-                                Submit
-                            </button>
-                        </form>
-                    </motion.div>
-
-                    {/* Contact Info */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={formInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
-                        className="space-y-12"
-                    >
-                        {/* New Business */}
-                        <div>
-                            <h3 className="text-sm text-muted mb-4">New Business</h3>
-                            <a
-                                href="mailto:hello@weframemedia.com"
-                                className="text-xl hover:text-accent transition-colors link-underline block mb-2"
-                            >
-                                hello@weframemedia.com
-                            </a>
-                            <a
-                                href="tel:+1234567890"
-                                className="text-xl hover:text-accent transition-colors"
-                            >
-                                +1 (234) 567-890
-                            </a>
-                        </div>
-
-                        {/* Headquarters */}
-                        <div>
-                            <h3 className="text-sm text-muted mb-4">Headquarters</h3>
-                            <p className="text-lg">123 Creative Street</p>
-                            <p className="text-lg">Suite #100</p>
-                            <p className="text-lg">Creative City, ST 12345</p>
-                        </div>
-
-                        {/* Follow Us */}
-                        <div>
-                            <h3 className="text-sm text-muted mb-4">Follow Us</h3>
-                            <div className="flex flex-col gap-2">
-                                <a
-                                    href="https://instagram.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-lg hover:text-accent transition-colors"
-                                >
-                                    Instagram
-                                </a>
-                                <a
-                                    href="https://linkedin.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-lg hover:text-accent transition-colors"
-                                >
-                                    LinkedIn
-                                </a>
-                                <a
-                                    href="https://vimeo.com"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-lg hover:text-accent transition-colors"
-                                >
-                                    Vimeo
-                                </a>
-                            </div>
-                        </div>
-                    </motion.div>
+                {/* 1) INTRO TEXT — now safely beneath navbar */}
+                <div className="mb-24 md:mb-32 max-w-6xl">
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.02] text-white/55 tracking-tight">
+                        No matter where you are in the creative and production journey, we are ready to dive in and get to work
+                    </h1>
                 </div>
-            </section>
+
+                {/* 2) LARGE GAP before form header (matches reference rhythm) */}
+                <div className="h-24 md:h-32 lg:h-40" />
+
+                {/* 3) FORM HEADER */}
+                <div className="mb-10 md:mb-12">
+                    <p className="text-white text-2xl md:text-4xl font-bold tracking-tight leading-tight">
+                        Fill out our form, or just schedule a call{' '}
+                        <Link
+                            href="#"
+                            className="underline underline-offset-4 decoration-white/40 hover:decoration-white transition-all"
+                        >
+                            HERE
+                        </Link>
+                    </p>
+                </div>
+
+                {/* 4) FORM */}
+                <form className="w-full space-y-8">
+                    {/* Brand Name */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Brand Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Nike"
+                            className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all text-lg font-medium"
+                        />
+                    </div>
+
+                    {/* Contact Name */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Contact Name
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="John Doe"
+                            className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all text-lg font-medium"
+                        />
+                    </div>
+
+                    {/* Email */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Email
+                        </label>
+                        <input
+                            type="email"
+                            placeholder="jane@nike.com"
+                            className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all text-lg font-medium"
+                        />
+                    </div>
+
+                    {/* Phone */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Phone
+                        </label>
+                        <input
+                            type="tel"
+                            placeholder="1234567980"
+                            className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all text-lg font-medium"
+                        />
+                    </div>
+
+                    {/* Web / Social */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Web / Social
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="nike.com"
+                            className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-white/20 transition-all text-lg font-medium"
+                        />
+                    </div>
+
+                    {/* Estimated Budget */}
+                    <div className="space-y-3">
+                        <label className="block text-xs uppercase tracking-wider text-[#666] font-semibold">
+                            Estimated Budget Range
+                        </label>
+                        <div className="relative">
+                            <select
+                                className="w-full h-16 md:h-20 rounded-full bg-[#111] border border-white/10 px-8 pr-14 text-gray-400 appearance-none focus:outline-none focus:ring-1 focus:ring-white/20 transition-all cursor-pointer text-lg font-medium"
+                                defaultValue=""
+                            >
+                                <option value="" disabled>
+                                    Select...
+                                </option>
+                                <option value="1">Under $10k</option>
+                                <option value="2">$10k - $50k</option>
+                                <option value="3">$50k - $100k</option>
+                                <option value="4">$100k+</option>
+                            </select>
+
+                            <div className="absolute right-8 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                                <ChevronDown className="w-5 h-5" />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Submit */}
+                    <div className="pt-12 md:pt-14">
+                        <button
+                            type="submit"
+                            className="w-full h-16 md:h-20 rounded-full bg-white/15 text-white text-lg font-semibold hover:bg-white/20 transition-all"
+                        >
+                            Submit
+                        </button>
+                    </div>
+
+                    {/* EXTRA FOOTER BREATHING ROOM */}
+                    <div className="h-24 md:h-32 lg:h-40" />
+                </form>
+            </div>
         </div>
     );
 }

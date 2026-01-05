@@ -9,8 +9,6 @@ const navLinks = [
     { name: 'Work', href: '/works-grid' },
     { name: 'Services', href: '/services' },
     { name: 'About', href: '/about' },
-    { name: 'Studio', href: '/studio' },
-    { name: 'Store', href: '/store' },
     { name: 'Contact', href: '/contact' },
 ];
 

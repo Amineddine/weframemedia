@@ -50,6 +50,9 @@ export default function Navbar() {
 
                     {/* Desktop Navigation */}
                     {/* Desktop Navigation */}
+
+
+
                     <div className="hidden md:flex items-center -translate-x-6">
 
                         {navLinks.map((link, index) => (

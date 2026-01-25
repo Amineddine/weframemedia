@@ -30,10 +30,10 @@ export default function Footer() {
                     </div>
 
                     {/* Email - Center */}
-                    <div className="flex justify-center w-full">
+                    <div className="flex justify-start w-full">
                         <a
                             href="mailto:hello@weframemedia.com"
-                            className="text-sm md:text-base hover:text-white/70 transition-colors text-center"
+                            className="text-sm md:text-base hover:text-white/70 transition-colors text-left"
                         >
                             hello@weframemedia.com
                         </a>

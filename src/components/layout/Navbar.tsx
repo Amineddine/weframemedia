@@ -44,13 +44,14 @@ export default function Navbar() {
                 <div className="w-full px-8 md:px-24 flex items-center justify-between">
                     {/* Logo */}
                     {/* Logo */}
-                    <Link href="/" className="relative z-50 translate-x-2 translate-y-1">
+                    <Link href="/" className="relative z-50 translate-x-6 translate-y-1">
                         <span className="text-xl md:text-2xl font-light tracking-wide text-white">WeFrameMedia</span>
                     </Link>
 
                     {/* Desktop Navigation */}
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center">
+                    <div className="hidden md:flex items-center -translate-x-6">
+
                         {navLinks.map((link, index) => (
                             <span key={link.name} className="flex items-center">
                                 <Link

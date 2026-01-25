@@ -38,7 +38,8 @@ export default function Clients() {
     return (
         <section ref={ref} className="pt-24 md:pt-32 pb-24 md:pb-32 bg-black overflow-hidden relative z-20">
             <Noise patternAlpha={15} />
-            <div className="container-custom mb-12">
+            {/* Client Names Block */}
+            <div className="w-full px-4 md:px-6 mb-12 relative z-10">
                 <div className="relative">
                     {/* Section Label */}
                     <motion.h2
@@ -55,8 +56,7 @@ export default function Clients() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
-                        className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white/50 w-full text-justify -ml-4 md:-ml-8 pr-4 md:pr-8"
-                        style={{ width: 'calc(100% + 2rem)' }}
+                        className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white/50 w-full text-left"
                     >
                         {clients.map((client, index) => (
                             <span key={index}>

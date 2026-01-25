@@ -27,7 +27,7 @@ export default function CTA() {
             </div>
 
             <div className="container-custom relative z-10 w-full">
-                <div className="max-w-4xl mx-auto text-center flex flex-col items-center justify-center">
+                <div className="max-w-4xl mx-auto text-left flex flex-col items-start justify-center">
                     {/* Animated Text */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -35,7 +35,7 @@ export default function CTA() {
                         transition={{ duration: 0.8 }}
                         className="mb-12 md:mb-16"
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white text-left">
                             {text}
                         </h2>
                     </motion.div>

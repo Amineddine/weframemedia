@@ -64,15 +64,27 @@ export default function WorksGridPage() {
                                 <div className={`relative overflow-hidden rounded-2xl bg-[#111] hover-lift ${viewMode === 'grid' ? 'aspect-video' : 'aspect-[21/9]'}`}>
                                     {/* Video Background */}
                                     <div className="absolute inset-0">
-                                        <video
-                                            autoPlay
-                                            loop
-                                            muted
-                                            playsInline
-                                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105"
-                                        >
-                                            <source src={project.video} type="video/mp4" />
-                                        </video>
+                                        {project.video.includes('vimeo') ? (
+                                            <iframe
+                                                src={`${project.video}&background=1&autoplay=1&loop=1&byline=0&title=0&dnt=1&badge=0`}
+                                                className="absolute top-1/2 left-1/2 w-[180%] h-[180%] -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
+                                                allow="autoplay; fullscreen; picture-in-picture"
+                                                allowFullScreen
+                                                loading="lazy"
+                                                style={{ border: 'none' }}
+                                                title={project.name}
+                                            />
+                                        ) : (
+                                            <video
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="absolute top-1/2 left-1/2 w-[180%] h-[180%] -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 pointer-events-none"
+                                            >
+                                                <source src={project.video} type="video/mp4" />
+                                            </video>
+                                        )}
                                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
                                     </div>
 
@@ -96,11 +108,11 @@ export default function WorksGridPage() {
                             </Link>
                         </motion.div>
                     ))}
-                </div>
+                </div >
 
                 {/* EXTRA BREATHING ROOM BEFORE FOOTER */}
-                <div style={{ height: '20vh' }} />
-            </div>
-        </div>
+                < div style={{ height: '20vh' }} />
+            </div >
+        </div >
     );
 }

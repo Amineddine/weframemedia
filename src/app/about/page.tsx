@@ -18,7 +18,7 @@ export default function AboutPage() {
                         playsInline
                         className="w-full h-full object-cover"
                     >
-                        <source src="/We Got Now  ,New Balance.mp4" type="video/mp4" />
+                        <source src="/RADDISON BLU - Gastronomic Night .mp4" type="video/mp4" />
                     </video>
                     {/* Dark Overlay */}
                     <span className="absolute inset-0 bg-black/35" />

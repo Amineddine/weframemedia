@@ -19,16 +19,15 @@ export default function Hero() {
         <section className="relative h-screen w-full overflow-hidden">
             {/* Video Background */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for text readability */}
+                <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" /> {/* Overlay for text readability */}
                 <video
-                    ref={videoRef}
                     autoPlay
                     loop
                     muted
                     playsInline
                     className="w-full h-full object-cover"
                 >
-                    <source src="/Beyond  Jordan Brand.mp4" type="video/mp4" />
+                    <source src="/skodauk.mp4" type="video/mp4" />
                 </video>
             </div>
 

@@ -14,7 +14,7 @@ export default function CTA() {
         <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/60 z-10" /> {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" /> {/* Dark overlay */}
                 <video
                     autoPlay
                     loop
@@ -22,7 +22,7 @@ export default function CTA() {
                     playsInline
                     className="w-full h-full object-cover"
                 >
-                    <source src="/A Magical Night in 13 Paix  ,CARTIER.mp4" type="video/mp4" />
+                    <source src="/Seven Saints.mp4" type="video/mp4" />
                 </video>
             </div>
 

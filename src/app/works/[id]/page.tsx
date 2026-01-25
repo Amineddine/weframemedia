@@ -75,13 +75,24 @@ export default function ProjectPage() {
                 className="w-full bg-[#050505]"
             >
                 <div className="aspect-video w-full max-h-[85vh] relative">
-                    <video
-                        controls
-                        autoPlay
-                        className="w-full h-full object-contain"
-                    >
-                        <source src={project.video} type="video/mp4" />
-                    </video>
+                    {project.video.includes('vimeo') ? (
+                        <iframe
+                            src={`${project.video}&autoplay=1&title=0&byline=0&portrait=0&badge=0`}
+                            className="w-full h-full object-contain"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                            title={project.name}
+                        />
+                    ) : (
+                        <video
+                            controls
+                            autoPlay
+                            className="w-full h-full object-contain"
+                        >
+                            <source src={project.video} type="video/mp4" />
+                        </video>
+                    )}
                 </div>
             </motion.div>
 
@@ -142,6 +153,26 @@ export default function ProjectPage() {
                     </div>
                 </div>
             </div>
+            {/* GALLERY VIDEOS (If any) */}
+            {project.gallery && project.gallery.length > 0 && (
+                <div className="container-custom pb-20">
+                    <h3 className="text-2xl font-bold mb-8">Related Videos</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {project.gallery.map((videoSrc, idx) => (
+                            <div key={idx} className="aspect-video w-full bg-[#050505] rounded-xl overflow-hidden relative">
+                                <video
+                                    controls
+                                    playsInline
+                                    className="w-full h-full object-cover"
+                                >
+                                    <source src={videoSrc} type="video/mp4" />
+                                </video>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
             {/* EXTRA BREATHING ROOM BEFORE FOOTER */}
             <div style={{ height: '80vh' }} />
         </div>

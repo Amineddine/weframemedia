@@ -10,11 +10,28 @@ export default function WorksGridPage() {
     const isInView = useInView(ref, { once: true, margin: '-50px' });
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+    // Helper to determine grid span based on index for a varied "bento" feel
+    const getGridSpan = (index: number) => {
+        if (viewMode === 'list') return 'w-full h-[40vh]';
+
+        // Pattern of 6
+        const remainder = index % 6;
+        switch (remainder) {
+            case 0: return 'md:col-span-2 md:row-span-2'; // Big Square
+            case 1: return 'md:col-span-1 md:row-span-1'; // Standard
+            case 2: return 'md:col-span-1 md:row-span-2'; // Tall
+            case 3: return 'md:col-span-1 md:row-span-1'; // Standard
+            case 4: return 'md:col-span-2 md:row-span-1'; // Wide
+            case 5: return 'md:col-span-1 md:row-span-1'; // Standard
+            default: return 'md:col-span-1 md:row-span-1';
+        }
+    };
+
     return (
         <div className="min-h-screen bg-black text-white">
-            <div className="container-custom">
+            <div className="w-full">
                 {/* Header Filter Section - Centered */}
-                <div className="h-[50vh] flex flex-col justify-center">
+                <div className="container-custom h-[30vh] flex flex-col justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -47,7 +64,7 @@ export default function WorksGridPage() {
                 {/* Projects Grid */}
                 <div
                     ref={ref}
-                    className={`pb-20 gap-6 ${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'flex flex-col space-y-12'}`}
+                    className={`pb-0 ${viewMode === 'grid' ? 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[35vh] md:auto-rows-[45vh] gap-2 grid-flow-dense' : 'flex flex-col space-y-2'}`}
                 >
                     {projects.map((project, index) => (
                         <motion.div
@@ -55,64 +72,59 @@ export default function WorksGridPage() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
-                            className="w-full"
+                            className={`${getGridSpan(index)} relative group overflow-hidden bg-[#111] rounded-xl`}
                         >
-                            <Link
-                                href={project.href}
-                                className="group block w-full"
-                            >
-                                <div className={`relative overflow-hidden rounded-2xl bg-[#111] hover-lift ${viewMode === 'grid' ? 'aspect-video' : 'aspect-[21/9]'}`}>
-                                    {/* Video Background */}
-                                    <div className="absolute inset-0">
-                                        {project.video.includes('vimeo') ? (
-                                            <iframe
-                                                src={`${project.video}&background=1&autoplay=1&loop=1&byline=0&title=0&dnt=1&badge=0`}
-                                                className="absolute top-1/2 left-1/2 w-[180%] h-[180%] -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
-                                                allow="autoplay; fullscreen; picture-in-picture"
-                                                allowFullScreen
-                                                loading="lazy"
-                                                style={{ border: 'none' }}
-                                                title={project.name}
-                                            />
-                                        ) : (
-                                            <video
-                                                autoPlay
-                                                loop
-                                                muted
-                                                playsInline
-                                                className="absolute top-1/2 left-1/2 w-[180%] h-[180%] -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 pointer-events-none"
-                                            >
-                                                <source src={project.video} type="video/mp4" />
-                                            </video>
-                                        )}
-                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
-                                    </div>
-
-                                    {/* Content Overlay */}
-                                    <div className="absolute bottom-6 left-6 z-10">
-                                        <div className="overflow-hidden">
-                                            <h3 className="text-xl md:text-2xl font-bold text-white transform translate-y-0 transition-transform duration-300">
-                                                {project.name}
-                                            </h3>
-                                        </div>
-                                        <div className="overflow-hidden">
-                                            <p className="text-sm md:text-base text-gray-400 mt-1">
-                                                {project.tagline}
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    {/* Hover Overlay Gradient */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+                            <Link href={project.href} className="block w-full h-full">
+                                {/* Video Background */}
+                                <div className="absolute inset-0 w-full h-full">
+                                    {project.video.includes('vimeo') ? (
+                                        <iframe
+                                            src={`${project.video}&background=1&autoplay=1&loop=1&byline=0&title=0&dnt=1&badge=0`}
+                                            className="absolute top-1/2 left-1/2 w-[150%] h-[150%] -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
+                                            allow="autoplay; fullscreen; picture-in-picture"
+                                            allowFullScreen
+                                            loading="lazy"
+                                            style={{ border: 'none' }}
+                                            title={project.name}
+                                        />
+                                    ) : (
+                                        <video
+                                            autoPlay
+                                            loop
+                                            muted
+                                            playsInline
+                                            className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 pointer-events-none"
+                                        >
+                                            <source src={project.video} type="video/mp4" />
+                                        </video>
+                                    )}
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300" />
                                 </div>
+
+                                {/* Content Overlay */}
+                                <div className="absolute bottom-6 left-6 z-10 w-[90%]">
+                                    <div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-white leading-tight">
+                                            {project.name}
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        <p className="text-sm md:text-base text-gray-300 mt-1">
+                                            {project.tagline}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Hover Overlay Gradient */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
                             </Link>
                         </motion.div>
                     ))}
-                </div >
+                </div>
 
                 {/* EXTRA BREATHING ROOM BEFORE FOOTER */}
-                < div style={{ height: '20vh' }} />
-            </div >
-        </div >
+                <div style={{ height: '40vh' }} />
+            </div>
+        </div>
     );
 }

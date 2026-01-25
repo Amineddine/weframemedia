@@ -5,6 +5,7 @@ import Clients from "@/components/sections/Clients";
 import Capabilities from "@/components/sections/Capabilities";
 import FollowUs from "@/components/sections/FollowUs";
 import CTA from "@/components/sections/CTA";
+import Noise from "@/components/ui/noise";
 
 export default function Home() {
   return (
@@ -12,13 +13,37 @@ export default function Home() {
       <Hero />
       <AgencyIntro />
       <LatestWork />
+
+      {/* Spacer 1 */}
+      <div className="h-[15vh] w-full bg-black relative overflow-hidden">
+        <Noise patternAlpha={15} />
+      </div>
+
       <Clients />
-      <div className="h-[25vh] w-full bg-black" />
+
+      {/* Spacer 2 */}
+      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+        <Noise patternAlpha={15} />
+      </div>
+
       <Capabilities />
-      <div className="h-[25vh] w-full bg-black" />
+
+      {/* Spacer 3 */}
+      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+        <Noise patternAlpha={15} />
+      </div>
+
       <FollowUs />
-      <div className="h-[25vh] w-full bg-black" />
+
+      {/* Spacer 4 */}
+      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+        <Noise patternAlpha={15} />
+      </div>
+
       <CTA />
+
+      {/* Footer Spacer (No Noise) */}
+      <div className="h-32 md:h-48 w-full bg-black" />
     </>
   );
 }

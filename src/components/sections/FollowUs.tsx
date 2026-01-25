@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import Noise from '@/components/ui/noise';
 
 const socialMediaItems = [
     { type: 'video', src: '/A Magical Night in 13 Paix  ,CARTIER.mp4' },
@@ -27,8 +28,9 @@ export default function FollowUs() {
     const loopedItems = [...socialMediaItems, ...socialMediaItems];
 
     return (
-        <section ref={ref} className="py-20 mt-80 md:mt-96 bg-black overflow-hidden">
-            <div className="container-custom">
+        <section ref={ref} className="py-20 mt-80 md:mt-96 bg-black overflow-hidden relative">
+            <Noise patternAlpha={15} />
+            <div className="container-custom relative z-10">
                 {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -55,8 +57,8 @@ export default function FollowUs() {
                 className="w-full relative"
             >
                 {/* Gradient Masks */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+                <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+                <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
                 <div className="flex animate-marquee gap-4 w-max hover:[animation-play-state:paused] items-center">
                     {loopedItems.map((item, index) => (

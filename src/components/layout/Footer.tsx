@@ -18,73 +18,82 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-background border-t border-border">
-            <div className="container-custom py-16">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-                    {/* Email Section */}
-                    <div className="md:col-span-4">
-                        <p className="text-sm text-muted mb-2">E:</p>
+        <footer className="bg-black border-t border-white/10 text-white min-h-[40vh] flex flex-col justify-center">
+            <div className="w-full px-8 md:px-24 py-12 flex flex-col justify-between h-full flex-grow">
+                {/* Top Section */}
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4 mb-auto pt-12 items-start">
+                    {/* Brand - Left */}
+                    <div className="flex justify-start">
+                        <Link href="/" className="text-xl md:text-2xl font-light tracking-wide">
+                            WeFrameMedia
+                        </Link>
+                    </div>
+
+                    {/* Email - Center */}
+                    <div className="flex justify-center w-full">
                         <a
                             href="mailto:hello@weframemedia.com"
-                            className="text-lg hover:text-muted transition-colors link-underline"
+                            className="text-sm md:text-base hover:text-white/70 transition-colors text-center"
                         >
                             hello@weframemedia.com
                         </a>
                     </div>
 
-                    {/* Navigation Links */}
-                    <div className="md:col-span-4">
-                        <nav className="flex flex-col gap-3">
+                    {/* Navigation - Right */}
+                    <div className="flex justify-center md:justify-start md:pl-16">
+                        <nav className="flex flex-col gap-2 text-left">
                             {footerLinks.map((link) => (
                                 <Link
                                     key={link.name}
                                     href={link.href}
-                                    className="text-foreground hover:text-muted transition-colors"
+                                    className="text-sm md:text-base hover:text-white/70 transition-colors"
                                 >
                                     {link.name}
                                 </Link>
                             ))}
                         </nav>
                     </div>
-
-                    {/* Logo and Copyright */}
-                    <div className="md:col-span-4 flex flex-col items-start md:items-end justify-between">
-                        <Image
-                            src="/WFM.png"
-                            alt="WeFrame Media"
-                            width={100}
-                            height={33}
-                            className="h-8 w-auto mb-8"
-                        />
-                        <div className="text-sm text-muted">
-                            <p>©WeFrame Media {new Date().getFullYear()}</p>
-                        </div>
-                    </div>
                 </div>
 
                 {/* Bottom Section */}
-                <div className="mt-16 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                    {/* Social Links */}
-                    <div className="flex gap-6">
-                        {socialLinks.map((link, index) => (
-                            <span key={link.name}>
-                                <a
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-sm text-muted hover:text-foreground transition-colors"
-                                >
-                                    {link.name}
-                                </a>
-                                {index < socialLinks.length - 1 && (
-                                    <span className="text-muted">,</span>
-                                )}
-                            </span>
-                        ))}
+                <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 items-end pb-12">
+                    {/* Copyright - Left */}
+                    <div className="text-xs text-white/50 flex justify-start">
+                        <p>©WeFrameMedia {new Date().getFullYear()}</p>
                     </div>
 
-                    {/* Rights */}
-                    <p className="text-sm text-muted">All Rights Reserved.</p>
+                    {/* Socials - Center */}
+                    <div className="flex justify-center gap-6 w-full">
+                        <a
+                            href="https://www.instagram.com/weframe_media?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-white/50 hover:text-white transition-colors"
+                        >
+                            Instagram
+                        </a>
+                        <a
+                            href="https://vimeo.com/user181550114?fl=pp&fe=sh"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-white/50 hover:text-white transition-colors"
+                        >
+                            Vimeo
+                        </a>
+                        <a
+                            href="https://linkedin.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-white/50 hover:text-white transition-colors"
+                        >
+                            LinkedIn
+                        </a>
+                    </div>
+
+                    {/* Rights - Right */}
+                    <div className="text-xs text-white/50 flex justify-end">
+                        <p>All Rights Reserved.</p>
+                    </div>
                 </div>
             </div>
         </footer>

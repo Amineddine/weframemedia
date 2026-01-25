@@ -16,9 +16,9 @@ export default function AboutPage() {
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover scale-150"
                     >
-                        <source src="/RADDISON BLU - Gastronomic Night .mp4" type="video/mp4" />
+                        <source src="/Raddison Blu - Gastronomic Night.mp4" type="video/mp4" />
                     </video>
                     {/* Dark Overlay */}
                     <span className="absolute inset-0 bg-black/35" />

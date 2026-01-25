@@ -27,8 +27,8 @@ export default function ProjectPage() {
     return (
         <div style={{ paddingBottom: '30vh', minHeight: '100vh', backgroundColor: 'black', color: 'white' }}>
             {/* Top Navigation / Spacing */}
-            <div style={{ paddingTop: '35vh' }} className="px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto">
-                <Link href="/works-grid" className="inline-flex items-center text-gray-500 hover:text-white mb-12 transition-colors">
+            <div style={{ paddingTop: '20vh' }} className="px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto">
+                <Link href="/works-grid" className="inline-flex items-center text-gray-500 hover:text-white mb-8 transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Works
                 </Link>
@@ -39,24 +39,24 @@ export default function ProjectPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-8">
+                    <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-0 text-center">
                         {project.name}
                     </h1>
-                    <p className="text-base md:text-xl text-gray-500 font-medium mb-16">
-                        {project.tagline}
-                    </p>
 
-                    {/* Metadata Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-white/10 pt-8">
-                        <div>
+                    {/* Spacer Block */}
+                    <div className="h-10 w-full" />
+
+                    {/* Metadata Grid - Spread (Left, Center, Right) */}
+                    <div className="flex w-full justify-between items-start border-t border-white/10 pt-8">
+                        <div className="text-left">
                             <span className="block text-xs uppercase tracking-wider text-gray-600 mb-1">Client:</span>
                             <span className="block text-base font-medium text-gray-300">{project.client}</span>
                         </div>
-                        <div>
+                        <div className="text-center">
                             <span className="block text-xs uppercase tracking-wider text-gray-600 mb-1">Year:</span>
                             <span className="block text-base font-medium text-gray-300">{project.year}</span>
                         </div>
-                        <div>
+                        <div className="text-right">
                             <span className="block text-xs uppercase tracking-wider text-gray-600 mb-1">Type:</span>
                             <span className="block text-base font-medium text-gray-300">{project.type}</span>
                         </div>
@@ -74,26 +74,71 @@ export default function ProjectPage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="w-full bg-[#050505]"
             >
-                <div className="aspect-video w-full max-h-[85vh] relative">
-                    {project.video.includes('vimeo') ? (
-                        <iframe
-                            src={`${project.video}&autoplay=1&title=0&byline=0&portrait=0&badge=0`}
-                            className="w-full h-full object-contain"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            allowFullScreen
-                            style={{ border: 'none' }}
-                            title={project.name}
-                        />
-                    ) : (
-                        <video
-                            controls
-                            autoPlay
-                            className="w-full h-full object-contain"
-                        >
-                            <source src={project.video} type="video/mp4" />
-                        </video>
-                    )}
-                </div>
+                {project.id === 10 && project.gallery ? (
+                    /* Fitlab Special: 3 Portrait Cards Side-by-Side */
+                    <div className="container-custom py-12">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {/* Main Video */}
+                            <div className="aspect-[9/16] w-full bg-[#050505] rounded-xl overflow-hidden relative">
+                                {project.video.includes('vimeo') ? (
+                                    <iframe
+                                        src={`${project.video}&autoplay=0&title=0&byline=0&portrait=0&badge=0&background=1`}
+                                        className="w-full h-full object-cover"
+                                        allow="autoplay; fullscreen; picture-in-picture"
+                                        allowFullScreen
+                                        style={{ border: 'none' }}
+                                        title={project.name}
+                                    />
+                                ) : (
+                                    <video
+                                        controls
+                                        playsInline
+                                        loop
+                                        className="w-full h-full object-cover"
+                                    >
+                                        <source src={project.video} type="video/mp4" />
+                                    </video>
+                                )}
+                            </div>
+
+                            {/* Gallery Videos */}
+                            {project.gallery.map((videoSrc, idx) => (
+                                <div key={idx} className="aspect-[9/16] w-full bg-[#050505] rounded-xl overflow-hidden relative">
+                                    <video
+                                        controls
+                                        playsInline
+                                        loop
+                                        className="w-full h-full object-cover"
+                                    >
+                                        <source src={videoSrc} type="video/mp4" />
+                                    </video>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                ) : (
+                    /* Standard Project Video */
+                    <div className="aspect-video w-full max-h-[85vh] relative">
+                        {project.video.includes('vimeo') ? (
+                            <iframe
+                                src={`${project.video}&autoplay=1&title=0&byline=0&portrait=0&badge=0`}
+                                className="w-full h-full object-contain"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowFullScreen
+                                style={{ border: 'none' }}
+                                title={project.name}
+                            />
+                        ) : (
+                            <video
+                                controls
+                                autoPlay
+                                className="w-full h-full object-contain"
+                            >
+                                <source src={project.video} type="video/mp4" />
+                            </video>
+                        )}
+                    </div>
+                )}
             </motion.div>
 
             {/* SPACER */}
@@ -153,8 +198,8 @@ export default function ProjectPage() {
                     </div>
                 </div>
             </div>
-            {/* GALLERY VIDEOS (If any) */}
-            {project.gallery && project.gallery.length > 0 && (
+            {/* GALLERY VIDEOS (If any) - Hidden for Fitlab */}
+            {project.gallery && project.gallery.length > 0 && project.id !== 10 && (
                 <div className="container-custom pb-20">
                     <h3 className="text-2xl font-bold mb-8">Related Videos</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import Noise from '@/components/ui/noise';
 
 const clients = [
     { name: 'Boutique de la terasse', logo: '/boutique.png' },
@@ -17,12 +18,27 @@ export default function Clients() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
 
-    // Triple the array for smoother seamless loop with fewer items
+    const clients = [
+        { name: 'Skoda', logo: '/SKODA.png' },
+        { name: 'Fitlab', logo: '/FITLAB.png' },
+        { name: 'M Avenue', logo: '/Mavenue.png' },
+        { name: 'Managem Group', logo: '/MANAGEM.png' },
+        { name: 'ABHT', logo: '/ABHT.png' },
+        { name: 'SRM', logo: '/SRM.png' },
+        { name: 'ARWM', logo: '/ARWM.png' },
+        { name: 'Nasli Holding', logo: '/NASLI HOLDING.png' },
+        { name: 'Gims / Horizon Morocco', logo: '/HORIZON MOROCCO.png' },
+        { name: 'EBF', logo: '/EMERGINGBUSINESSFACTORY.png' },
+        { name: 'UM6P', logo: '/UM6P.png' },
+    ];
+
+    // Triple the array for smoother seamless loop
     const loopedClients = [...clients, ...clients, ...clients];
 
     return (
         <section ref={ref} className="pt-24 md:pt-32 pb-24 md:pb-32 bg-black overflow-hidden relative z-20">
-            <div className="container-custom mb-20 md:mb-32">
+            <Noise patternAlpha={15} />
+            <div className="container-custom mb-12">
                 <div className="relative">
                     {/* Section Label */}
                     <motion.h2
@@ -39,39 +55,27 @@ export default function Clients() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ delay: 0.2, duration: 0.5 }}
-                        className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-tight text-white/50 max-w-6xl"
+                        className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white/50 w-full text-justify -ml-4 md:-ml-8 pr-4 md:pr-8"
+                        style={{ width: 'calc(100% + 2rem)' }}
                     >
-                        {/* Boutique de la terasse (White) */}
-                        {"Boutique de la terasse".split(' ').map((word, i) => (
-                            <span key={`b-${i}`}><span className="text-white inline-block transition-all duration-300 hover:blur-[2px] cursor-default">{word}</span>{' '}</span>
-                        ))}
-                        <span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">,</span>{' '}
-
-                        {/* Le Bedouin agafay (Default/Grey) */}
-                        {"Le Bedouin agafay".split(' ').map((word, i) => (
-                            <span key={`l-${i}`}><span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">{word}</span>{' '}</span>
-                        ))}
-                        <span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">,</span>{' '}
-
-                        {/* Ksar El Hamra (White) */}
-                        {"Ksar El Hamra".split(' ').map((word, i) => (
-                            <span key={`k-${i}`}><span className="text-white inline-block transition-all duration-300 hover:blur-[2px] cursor-default">{word}</span>{' '}</span>
-                        ))}
-                        <span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">,</span>{' '}
-
-                        {/* M avenue Marrakech (Default/Grey) */}
-                        {"M avenue Marrakech".split(' ').map((word, i) => (
-                            <span key={`m-${i}`}><span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">{word}</span>{' '}</span>
-                        ))}
-                        <span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">,</span>{' '}
-
-                        {/* SRM Marrakech (White) */}
-                        {"SRM Marrakech".split(' ').map((word, i) => (
-                            <span key={`s-${i}`}><span className="text-white inline-block transition-all duration-300 hover:blur-[2px] cursor-default">{word}</span>{' '}</span>
+                        {clients.map((client, index) => (
+                            <span key={index}>
+                                <span className={`${index % 2 === 0 ? 'text-white' : ''} inline-block transition-all duration-300 hover:blur-[2px] cursor-default`}>
+                                    {client.name}
+                                </span>
+                                {index < clients.length - 1 && (
+                                    <>
+                                        <span className="inline-block transition-all duration-300 hover:blur-[2px] cursor-default">,</span>{' '}
+                                    </>
+                                )}
+                            </span>
                         ))}
                     </motion.p>
                 </div>
             </div>
+
+            {/* Spacer Block */}
+            <div className="h-32 md:h-48 w-full" />
 
             {/* Marquee Container */}
             <motion.div
@@ -89,7 +93,7 @@ export default function Clients() {
                     {loopedClients.map((client, index) => (
                         <div
                             key={`${client.name}-${index}`}
-                            className="flex-shrink-0 mx-8 md:mx-16 relative h-16 w-32 md:h-24 md:w-48 grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
+                            className="flex-shrink-0 mx-12 md:mx-24 relative h-24 w-48 md:h-40 md:w-80 grayscale hover:grayscale-0 transition-all duration-300 opacity-50 hover:opacity-100"
                         >
                             <Image
                                 src={client.logo}

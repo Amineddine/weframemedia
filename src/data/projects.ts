@@ -1,5 +1,108 @@
 export const projects = [
     {
+        id: 5,
+        name: 'Best Receptionist in Morocco 2025',
+        tagline: 'AICR',
+        video: '/Mamounia Reception Video V4.mp4',
+        href: '/works/5',
+        client: 'AICR / La Mamounia',
+        year: '2025',
+        type: 'Event',
+        description: 'Coverage of the prestigious "Best Receptionist in Morocco 2025" competition by AICR, hosted at the legendary La Mamounia hotel.',
+        credits: {
+            agency: 'AICR',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
+        id: 11,
+        name: 'Sunset Village - Private Residences',
+        tagline: 'Maitre Gims',
+        video: '/Gims Video 2.mp4',
+        href: '/works/11',
+        client: 'Maitre Gims',
+        year: '2025',
+        type: 'Real Estate',
+        description: 'A glimpse into Sunset Village Private Residences in Marrakech, an exclusive real estate venture by Maitre Gims.',
+        credits: {
+            agency: 'Maitre Gims',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
+        id: 8,
+        name: 'Bâtir la Villa de Vos Rêves',
+        tagline: 'Mysk Marrakech',
+        video: 'https://player.vimeo.com/video/739298377?h=3619a03771',
+        href: '/works/8',
+        client: 'Mysk Marrakech',
+        year: '2025',
+        type: 'Real Estate',
+        description: 'Mysk Marrakech - Bâtir la Villa de Vos Rêves à Votre Goût',
+        credits: {
+            agency: 'Mysk',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
+        id: 6,
+        name: 'The Beauty of Pastries',
+        tagline: 'Radisson Blu Marrakech',
+        video: '/Raddison Blu - Gastronomic Night.mp4',
+        href: '/works/6',
+        client: 'Radisson Blu Marrakech',
+        year: '2025',
+        type: 'Culinary / Commercial',
+        description: 'The Beauty of Pastries - Radisson Blu Marrakech',
+        credits: {
+            agency: 'Radisson Blu',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
+        id: 12,
+        name: 'Drifting on to the World',
+        tagline: 'Skoda UK',
+        video: '/skodauk.mp4',
+        href: '/works/12',
+        client: 'Skoda UK',
+        year: '2025',
+        type: 'Automotive / Commercial',
+        description: 'An adventurous ad campaign for Skoda UK, filmed across the stunning landscapes of Ouarzazate and its regions.',
+        credits: {
+            agency: 'Skoda UK',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
+        id: 10,
+        name: 'Gym Tour',
+        tagline: 'Fitlab',
+        video: '/Gym Tour.mp4',
+        gallery: ['/V4 COACHES.mp4', '/Reel 2.mp4'],
+        href: '/works/10',
+        client: 'Fitlab',
+        year: '2025',
+        type: 'Commercial',
+        description: 'An energetic gym tour for Fitlab, showcasing state-of-the-art equipment and the motivating atmosphere of the facility.',
+        credits: {
+            agency: 'Fitlab',
+            director: 'Unknown',
+            editor: 'Unknown',
+            photographer: 'Unknown'
+        }
+    },
+    {
         id: 1,
         name: 'Exploring the Diversity',
         tagline: 'M Avenue',
@@ -37,7 +140,7 @@ export const projects = [
         id: 3,
         name: 'Leading the Moroccan industrial ecosystem',
         tagline: 'TECKNIX-UM6P',
-        video: '/Vf  Um6p Tecknix 8 July -  English.mp4',
+        video: '/Vf  Um6p Tecknix 8 July -  English(1).mp4',
         href: '/works/3',
         client: 'TECKNIX-UM6P',
         year: '2024',
@@ -68,40 +171,6 @@ export const projects = [
         }
     },
     {
-        id: 5,
-        name: 'Best Receptionist in Morocco 2025',
-        tagline: 'AICR',
-        video: '/Mamounia Reception Video V4.mp4',
-        href: '/works/5',
-        client: 'AICR / La Mamounia',
-        year: '2025',
-        type: 'Event',
-        description: 'Coverage of the prestigious "Best Receptionist in Morocco 2025" competition by AICR, hosted at the legendary La Mamounia hotel.',
-        credits: {
-            agency: 'AICR',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
-        id: 6,
-        name: 'The Beauty of Pastries',
-        tagline: 'Radisson Blu Marrakech',
-        video: '/Raddison Blu - Gastronomic Night.mp4',
-        href: '/works/6',
-        client: 'Radisson Blu Marrakech',
-        year: '2025',
-        type: 'Culinary / Commercial',
-        description: 'The Beauty of Pastries - Radisson Blu Marrakech',
-        credits: {
-            agency: 'Radisson Blu',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
         id: 7,
         name: 'See You in HEEC Marrakech',
         tagline: 'HEEC',
@@ -119,23 +188,6 @@ export const projects = [
         }
     },
     {
-        id: 8,
-        name: 'Bâtir la Villa de Vos Rêves',
-        tagline: 'Mysk Marrakech',
-        video: 'https://player.vimeo.com/video/739298377?h=3619a03771',
-        href: '/works/8',
-        client: 'Mysk Marrakech',
-        year: '2025',
-        type: 'Real Estate',
-        description: 'Mysk Marrakech - Bâtir la Villa de Vos Rêves à Votre Goût',
-        credits: {
-            agency: 'Mysk',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
         id: 9,
         name: 'The Beauty of Agafay Desert',
         tagline: 'Seven Saints',
@@ -147,58 +199,6 @@ export const projects = [
         description: 'Experience the magic of Seven Saints, a luxury desert camp nestled in the breathtaking Agafay Desert, Marrakech.',
         credits: {
             agency: 'Seven Saints',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
-        id: 10,
-        name: 'Gym Tour',
-        tagline: 'Fitlab',
-        video: '/Gym Tour.mp4',
-        gallery: ['/V4 COACHES.mp4', '/Reel 2.mp4'],
-        href: '/works/10',
-        client: 'Fitlab',
-        year: '2025',
-        type: 'Commercial',
-        description: 'An energetic gym tour for Fitlab, showcasing state-of-the-art equipment and the motivating atmosphere of the facility.',
-        credits: {
-            agency: 'Fitlab',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
-        id: 11,
-        name: 'Sunset Village - Private Residences',
-        tagline: 'Maitre Gims',
-        video: '/Gims Video 2.mp4',
-        href: '/works/11',
-        client: 'Maitre Gims',
-        year: '2025',
-        type: 'Real Estate',
-        description: 'A glimpse into Sunset Village Private Residences in Marrakech, an exclusive real estate venture by Maitre Gims.',
-        credits: {
-            agency: 'Maitre Gims',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
-    {
-        id: 12,
-        name: 'Drifting on to the World',
-        tagline: 'Skoda UK',
-        video: '/skodauk.mp4',
-        href: '/works/12',
-        client: 'Skoda UK',
-        year: '2025',
-        type: 'Automotive / Commercial',
-        description: 'An adventurous ad campaign for Skoda UK, filmed across the stunning landscapes of Ouarzazate and its regions.',
-        credits: {
-            agency: 'Skoda UK',
             director: 'Unknown',
             editor: 'Unknown',
             photographer: 'Unknown'

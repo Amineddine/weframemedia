@@ -20,6 +20,9 @@ export const metadata: Metadata = {
     description: "Bending minds to your brands will. A creative kind of agency specializing in video production and visual storytelling.",
     type: "website",
   },
+  icons: {
+    icon: "/WFM.png",
+  },
 };
 
 export default function RootLayout({

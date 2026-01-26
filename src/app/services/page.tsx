@@ -14,21 +14,21 @@ const services = [
     },
     {
         id: '02',
-        title: 'Post Production',
-        description: 'Our state-of-the-art post-production facility is where stories truly come alive. We offer comprehensive editing, color grading, sound design, and VFX services to polish your project to perfection.',
-        image: '/post.jpg',
+        title: 'Photography',
+        description: 'Capturing moments that define your brand. From high-end product photography to corporate events and lifestyle shoots, we deliver visuals that tell a compelling story.',
+        image: '/photography.jpg',
     },
     {
         id: '03',
-        title: 'Podcasts',
-        description: 'We produce engaging audio and video podcasts that connect with audiences. Whether it\'s a branded series or a narrative audio drama, we provide end-to-end production support to help you find your voice.',
-        image: '/podcast.jpg',
+        title: 'Drone Filming',
+        description: 'Elevate your perspective with breathtaking aerial cinematography. Our licensed drone pilots capture stunning 4K footage that adds cinematic scale to your productions.',
+        image: '/drone.jpg',
     },
     {
         id: '04',
-        title: 'Motion',
-        description: 'We blend art and technology to create stunning motion graphics and animations. From title sequences to full 3D environments, our motion team adds a layer of depth and visual sophistication to any project.',
-        image: '/motion.jpg',
+        title: 'Digital Branding',
+        description: 'Building identities that resonate. We weave strategy and design to create cohesive brand experiences across all platforms, ensuring your visual presence is as powerful as your message.',
+        image: '/digitalbranding2.jpg',
     },
 ];
 
@@ -95,17 +95,21 @@ export default function ServicesPage() {
 
             {/* 3. "WE HAVE YOU COVERED" SECTION */}
             <section className="w-full">
+
                 <motion.h2
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-6xl font-bold tracking-tighter mb-12 md:mb-20 px-4 md:px-6"
+                    className="text-4xl md:text-6xl font-bold tracking-tighter mb-24 md:mb-32 px-12 md:px-24"
                 >
                     We have you covered
                 </motion.h2>
 
+                {/* Explicit Spacer Block */}
+                <div className="w-full h-24 md:h-40" />
+
                 {/* Full-Width Card Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12 md:px-24">
                     {services.map((service, index) => (
                         <motion.div
                             key={index}

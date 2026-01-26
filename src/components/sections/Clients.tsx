@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
-import Noise from '@/components/ui/noise';
 
 const clients = [
     { name: 'Boutique de la terasse', logo: '/boutique.png' },
@@ -37,7 +36,6 @@ export default function Clients() {
 
     return (
         <section ref={ref} className="pt-24 md:pt-32 pb-24 md:pb-32 bg-black overflow-hidden relative z-20">
-            <Noise patternAlpha={15} />
             {/* Client Names Block */}
             <div className="w-full px-4 md:px-6 mb-12 relative z-10">
                 <div className="relative">

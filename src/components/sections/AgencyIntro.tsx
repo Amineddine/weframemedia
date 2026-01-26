@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import Noise from '@/components/ui/noise';
 
 const text = "WeFrame Media : is a creative videography and digital marketing agency that helps brands tell compelling stories through high-quality visuals, strategic content, and data-driven marketing. We specialize in producing engaging video content and building digital campaigns that elevate brand presence, drive engagement, and deliver measurable growth.";
 
@@ -13,8 +12,7 @@ export default function AgencyIntro() {
 
     return (
         <section ref={ref} className="section-padding bg-black relative overflow-hidden">
-            {/* Dynamic Noise Overlay */}
-            <Noise patternAlpha={20} />
+
 
             <div className="container-custom relative z-10">
                 <motion.div

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Noise from "@/components/ui/noise";
 
 
 const inter = Inter({
@@ -29,6 +30,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
+        <div className="fixed inset-0 z-[9999] pointer-events-none">
+          <Noise />
+        </div>
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -4,7 +4,6 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/moving-border';
-import Noise from '@/components/ui/noise';
 
 export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -32,8 +31,7 @@ export default function Hero() {
                 </video>
             </div>
 
-            {/* Noise Overlay */}
-            <Noise patternAlpha={15} />
+
 
             {/* Content Overlay */}
             <div className="relative z-10 h-full flex flex-col justify-between container-custom pt-24 pb-12">

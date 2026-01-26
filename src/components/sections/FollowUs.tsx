@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import Noise from '@/components/ui/noise';
 
 const socialMediaItems = [
     { type: 'video', src: '/A Magical Night in 13 Paix  ,CARTIER.mp4' },
@@ -29,7 +28,6 @@ export default function FollowUs() {
 
     return (
         <section ref={ref} className="py-20 mt-80 md:mt-96 bg-black overflow-hidden relative">
-            <Noise patternAlpha={15} />
             <div className="container-custom relative z-10">
                 {/* Header */}
                 <motion.div

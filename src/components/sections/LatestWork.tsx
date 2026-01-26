@@ -5,7 +5,6 @@ import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/data/projects';
-import Noise from '@/components/ui/noise';
 
 export default function LatestWork() {
     const ref = useRef(null);
@@ -27,7 +26,6 @@ export default function LatestWork() {
 
     return (
         <section ref={ref} className="pt-12 pb-40 md:pt-20 md:pb-64 bg-black relative overflow-hidden">
-            <Noise patternAlpha={15} />
             <div className="w-full px-4 md:px-6 relative z-10">
                 {/* Header */}
                 <motion.div
@@ -55,7 +53,7 @@ export default function LatestWork() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                                className={`${getGridSpan(index)} relative group overflow-hidden bg-[#111] rounded-2xl`}
+                                className={`${getGridSpan(index)} relative group overflow-hidden bg-[#111]`}
                             >
                                 <Link href={project.href} className="block w-full h-full">
                                     {/* Video Background */}
@@ -91,7 +89,7 @@ export default function LatestWork() {
                                     <div className="project-card-overlay" />
 
                                     {/* Content (Bottom Left) */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10 text-left">
+                                    <div className="absolute bottom-0 left-0 right-0 p-8 pb-10 z-10 text-left">
                                         <h3 className="text-xl font-semibold mb-1 text-white">{project.name}</h3>
                                         <p className="text-sm text-gray-200">{project.tagline}</p>
                                     </div>

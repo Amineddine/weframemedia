@@ -78,22 +78,32 @@ export default function AboutPage() {
                     Team
                 </motion.h2>
 
-                <div className="flex flex-col md:flex-row gap-10">
-                    {/* Single Team Member Card - CEO */}
-                    <div className="w-full md:w-1/2 lg:w-1/3 group">
-                        <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-[#111] mb-6">
-                            <Image
-                                src="/must.jpg"
-                                alt="Mustapha Achraoui"
-                                fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
-                            />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+                    {[
+                        { name: 'Mustapha Achraoui', role: 'Founder & Creative Director', image: '/MUSTAPHA ACHRAOUI .jpg' },
+                        { name: 'Zakaria El Ouardi', role: 'Director & Editor', image: '/ZAKARIA EL OUARDI.jpg' },
+                        { name: 'Soukaina Guifrane', role: 'Project Manager', image: '/SOUKAINA GUIFRANE.jpg' },
+                        { name: 'Ghita Dib', role: 'Account Manager', image: '/GHITA DIIB.jpg' },
+                        { name: 'Youssef Bouskour', role: 'DP & Editor', image: '/YOUSEF BOUSKOUR.jpg' },
+                        { name: 'Fatine El Bouazaoui', role: 'Account Manager', image: '/FATINE EL BOUAZAOUI.jpg' },
+                        { name: 'Yassir Boussengarne', role: 'Photographer', image: '/YASSIR.jpg' },
+                        { name: 'Ilyas Sabouny', role: 'Graphic Design', image: '/ILYAS SABOUNY.jpg' },
+                    ].map((member, index) => (
+                        <div key={index} className="group">
+                            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-[#111] mb-6">
+                                <Image
+                                    src={member.image}
+                                    alt={member.name}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                                />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                                <p className="text-gray-500 font-medium text-sm">{member.role}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h3 className="text-2xl font-bold mb-1">Mustapha Achraoui</h3>
-                            <p className="text-gray-500 font-medium">CEO</p>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </section>
 

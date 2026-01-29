@@ -1,21 +1,5 @@
 export const projects = [
-    {
-        id: 5,
-        name: 'Best Receptionist in Morocco 2025',
-        tagline: 'AICR',
-        video: '/Mamounia Reception Video V4.mp4',
-        href: '/works/5',
-        client: 'AICR / La Mamounia',
-        year: '2025',
-        type: 'Event',
-        description: 'Coverage of the prestigious "Best Receptionist in Morocco 2025" competition by AICR, hosted at the legendary La Mamounia hotel.',
-        credits: {
-            agency: 'AICR',
-            director: 'Unknown',
-            editor: 'Unknown',
-            photographer: 'Unknown'
-        }
-    },
+
     {
         id: 11,
         name: 'Sunset Village - Private Residences',

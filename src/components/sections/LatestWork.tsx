@@ -45,8 +45,8 @@ export default function LatestWork() {
 
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[30vh] md:auto-rows-[40vh] gap-3 grid-flow-dense">
-                    {projects.filter(p => [5, 11, 8, 6, 12, 10].includes(p.id))
-                        .sort((a, b) => [5, 11, 8, 6, 12, 10].indexOf(a.id) - [5, 11, 8, 6, 12, 10].indexOf(b.id))
+                    {projects.filter(p => [11, 8, 6, 12, 10].includes(p.id))
+                        .sort((a, b) => [11, 8, 6, 12, 10].indexOf(a.id) - [11, 8, 6, 12, 10].indexOf(b.id))
                         .map((project, index) => (
                             <motion.div
                                 key={project.id}

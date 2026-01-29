@@ -35,9 +35,9 @@ export default function ProjectPage() {
 
                 {/* Header Section */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.3 }}
                 >
                     <h1 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight mb-0 text-center">
                         {project.name}
@@ -71,7 +71,7 @@ export default function ProjectPage() {
             <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
                 className="w-full bg-[#050505]"
             >
                 {project.id === 10 && project.gallery ? (

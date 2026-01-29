@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/WFM.png",
+    shortcut: "/WFM.png",
+    apple: "/WFM.png",
   },
 };
 

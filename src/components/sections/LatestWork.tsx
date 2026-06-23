@@ -18,7 +18,7 @@ export default function LatestWork() {
             case 2: return 'md:col-span-1 md:row-span-2'; // Tall
             case 3: return 'md:col-span-1 md:row-span-1'; // Standard
             case 4: return 'md:col-span-2 md:row-span-1'; // Wide
-            case 5: return 'md:col-span-1 md:row-span-1'; // Standard
+            case 5: return 'md:col-span-2 md:row-span-1'; // Wide (match Mysk Marrakech)
             default: return 'md:col-span-1 md:row-span-1';
         }
     };
@@ -49,8 +49,8 @@ export default function LatestWork() {
 
                 {/* Projects Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 auto-rows-[30vh] md:auto-rows-[40vh] gap-3 grid-flow-dense">
-                    {projects.filter(p => [11, 8, 6, 12, 10].includes(p.id))
-                        .sort((a, b) => [11, 8, 6, 12, 10].indexOf(a.id) - [11, 8, 6, 12, 10].indexOf(b.id))
+                    {projects.filter(p => [11, 8, 6, 12, 10, 9].includes(p.id))
+                        .sort((a, b) => [11, 8, 6, 12, 10, 9].indexOf(a.id) - [11, 8, 6, 12, 10, 9].indexOf(b.id))
                         .map((project, index) => (
                             <motion.div
                                 key={project.id}

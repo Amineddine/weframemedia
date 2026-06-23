@@ -11,7 +11,7 @@ export default function CTA() {
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     return (
-        <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black">
+        <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
             {/* Background Video */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute inset-0 bg-black/60 z-10 pointer-events-none" /> {/* Dark overlay */}

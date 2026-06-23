@@ -25,9 +25,9 @@ export default function ProjectPage() {
     }
 
     return (
-        <div style={{ paddingBottom: '30vh', minHeight: '100vh', backgroundColor: 'black', color: 'white' }}>
+        <div style={{ paddingBottom: '30vh', minHeight: '100vh', color: 'white' }}>
             {/* Top Navigation / Spacing */}
-            <div style={{ paddingTop: '20vh' }} className="px-6 md:px-12 lg:px-20 max-w-[1920px] mx-auto">
+            <div style={{ paddingTop: '20vh' }} className="px-6 md:px-12 lg:px-20 px-mobile max-w-[1920px] mx-auto">
                 <Link href="/works-grid" className="inline-flex items-center text-gray-500 hover:text-white mb-8 transition-colors">
                     <ArrowLeft className="w-4 h-4 mr-2" />
                     Back to Works
@@ -74,71 +74,28 @@ export default function ProjectPage() {
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="w-full bg-[#050505]"
             >
-                {project.id === 10 && project.gallery ? (
-                    /* Fitlab Special: 3 Portrait Cards Side-by-Side */
-                    <div className="container-custom py-12">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            {/* Main Video */}
-                            <div className="aspect-[9/16] w-full bg-[#050505] rounded-xl overflow-hidden relative">
-                                {project.video.includes('vimeo') ? (
-                                    <iframe
-                                        src={`${project.video}&autoplay=0&title=0&byline=0&portrait=0&badge=0&background=1`}
-                                        className="w-full h-full object-cover"
-                                        allow="autoplay; fullscreen; picture-in-picture"
-                                        allowFullScreen
-                                        style={{ border: 'none' }}
-                                        title={project.name}
-                                    />
-                                ) : (
-                                    <video
-                                        controls
-                                        playsInline
-                                        loop
-                                        className="w-full h-full object-cover"
-                                    >
-                                        <source src={project.video} type="video/mp4" />
-                                    </video>
-                                )}
-                            </div>
-
-                            {/* Gallery Videos */}
-                            {project.gallery.map((videoSrc, idx) => (
-                                <div key={idx} className="aspect-[9/16] w-full bg-[#050505] rounded-xl overflow-hidden relative">
-                                    <video
-                                        controls
-                                        playsInline
-                                        loop
-                                        className="w-full h-full object-cover"
-                                    >
-                                        <source src={videoSrc} type="video/mp4" />
-                                    </video>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                ) : (
-                    /* Standard Project Video */
-                    <div className="aspect-video w-full max-h-[85vh] relative">
-                        {project.video.includes('vimeo') ? (
-                            <iframe
-                                src={`${project.video}&autoplay=1&title=0&byline=0&portrait=0&badge=0`}
-                                className="w-full h-full object-contain"
-                                allow="autoplay; fullscreen; picture-in-picture"
-                                allowFullScreen
-                                style={{ border: 'none' }}
-                                title={project.name}
-                            />
-                        ) : (
-                            <video
-                                controls
-                                autoPlay
-                                className="w-full h-full object-contain"
-                            >
-                                <source src={project.video} type="video/mp4" />
-                            </video>
-                        )}
-                    </div>
-                )}
+                <div className="aspect-video w-full max-h-[85vh] relative">
+                    {project.video.includes('vimeo') ? (
+                        <iframe
+                            src={`${project.video}&autoplay=1&title=0&byline=0&portrait=0&badge=0`}
+                            className="w-full h-full object-contain"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowFullScreen
+                            style={{ border: 'none' }}
+                            title={project.name}
+                        />
+                    ) : (
+                        <video
+                            controls
+                            autoPlay
+                            playsInline
+                            preload="metadata"
+                            className="w-full h-full object-contain"
+                        >
+                            <source src={project.video} type="video/mp4" />
+                        </video>
+                    )}
+                </div>
             </motion.div>
 
             {/* SPACER */}
@@ -198,26 +155,6 @@ export default function ProjectPage() {
                     </div>
                 </div>
             </div>
-            {/* GALLERY VIDEOS (If any) - Hidden for Fitlab */}
-            {project.gallery && project.gallery.length > 0 && project.id !== 10 && (
-                <div className="container-custom pb-20">
-                    <h3 className="text-2xl font-bold mb-8">Related Videos</h3>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {project.gallery.map((videoSrc, idx) => (
-                            <div key={idx} className="aspect-video w-full bg-[#050505] rounded-xl overflow-hidden relative">
-                                <video
-                                    controls
-                                    playsInline
-                                    className="w-full h-full object-cover"
-                                >
-                                    <source src={videoSrc} type="video/mp4" />
-                                </video>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
-
             {/* EXTRA BREATHING ROOM BEFORE FOOTER */}
             <div style={{ height: '80vh' }} />
         </div>

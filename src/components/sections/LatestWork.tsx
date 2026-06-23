@@ -3,7 +3,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
-import Image from 'next/image';
 import { projects } from '@/data/projects';
 
 export default function LatestWork() {
@@ -25,7 +24,7 @@ export default function LatestWork() {
     };
 
     return (
-        <section ref={ref} className="pt-12 pb-40 md:pt-20 md:pb-64 bg-black relative overflow-hidden">
+        <section ref={ref} className="pt-12 pb-40 md:pt-20 md:pb-64 relative overflow-hidden">
             <div className="w-full px-4 md:px-6 relative z-10">
                 {/* Header */}
                 <motion.div
@@ -34,7 +33,12 @@ export default function LatestWork() {
                     transition={{ duration: 0.5 }}
                     className="flex justify-between items-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white">Latest work</h2>
+                    <h2
+                        className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight text-white"
+                        style={{ paddingLeft: 'clamp(1.5rem, 5vw, 4rem)' }}
+                    >
+                        Latest work
+                    </h2>
                     <Link
                         href="/works-grid"
                         className="text-muted hover:text-foreground transition-colors link-underline"
@@ -52,7 +56,7 @@ export default function LatestWork() {
                                 key={project.id}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                transition={{ delay: index * 0.1, duration: 0.5 }}
+                                transition={{ delay: index * 0.06, duration: 0.5 }}
                                 className={`${getGridSpan(index)} relative group overflow-hidden bg-[#111]`}
                             >
                                 <Link href={project.href} className="block w-full h-full">
@@ -77,6 +81,7 @@ export default function LatestWork() {
                                                 loop
                                                 muted
                                                 playsInline
+                                                preload="metadata"
                                                 className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 pointer-events-none"
                                             >
                                                 <source src={project.video} type="video/mp4" />
@@ -88,8 +93,10 @@ export default function LatestWork() {
                                     {/* Hover Overlay */}
                                     <div className="project-card-overlay" />
 
-                                    {/* Content (Bottom Left) */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-8 pb-10 z-10 text-left">
+                                    {/* Content (Bottom Left) — inset matches /works-grid (uses
+                                        positional offsets because the global `* { padding: 0 }`
+                                        reset overrides Tailwind's p-* utilities) */}
+                                    <div className="absolute bottom-6 left-6 z-10 w-[90%] text-left">
                                         <h3 className="text-xl font-semibold mb-1 text-white">{project.name}</h3>
                                         <p className="text-sm text-gray-200">{project.tagline}</p>
                                     </div>

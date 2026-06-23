@@ -28,7 +28,7 @@ export default function WorksGridPage() {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white">
+        <div className="min-h-screen text-white">
             <div className="w-full">
                 {/* Header Filter Section - Centered */}
                 <div className="container-custom h-[30vh] flex flex-col justify-center">
@@ -71,7 +71,7 @@ export default function WorksGridPage() {
                             key={project.id}
                             initial={{ opacity: 0, y: 30 }}
                             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
+                            transition={{ delay: index * 0.05, duration: 0.5 }}
                             className={`${getGridSpan(index)} relative group overflow-hidden bg-[#111] rounded-xl`}
                         >
                             <Link href={project.href} className="block w-full h-full">
@@ -93,6 +93,7 @@ export default function WorksGridPage() {
                                             loop
                                             muted
                                             playsInline
+                                            preload="metadata"
                                             className="absolute top-1/2 left-1/2 w-full h-full -translate-x-1/2 -translate-y-1/2 object-cover grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105 pointer-events-none"
                                         >
                                             <source src={project.video} type="video/mp4" />

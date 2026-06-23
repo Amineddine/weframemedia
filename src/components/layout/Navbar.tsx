@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -41,7 +40,7 @@ export default function Navbar() {
             <nav
                 className={`fixed top-4 left-0 right-0 z-50 transition-all duration-300 pt-12 pb-6`}
             >
-                <div className="w-full px-8 md:px-24 flex items-center justify-between">
+                <div className="w-full px-8 md:px-24 px-mobile flex items-center justify-between">
                     {/* Logo */}
                     {/* Logo */}
                     <Link href="/" className="relative z-50 translate-x-6 translate-y-1">

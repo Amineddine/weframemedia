@@ -15,7 +15,7 @@ const Noise: React.FC<NoiseProps> = ({
     patternSize = 250, // (reserved for future scaling)
     patternScaleX = 1,  // (reserved)
     patternScaleY = 1,  // (reserved)
-    patternRefreshInterval = 2,
+    patternRefreshInterval = 3,
     patternAlpha = 15,
 }) => {
     const grainRef = useRef<HTMLCanvasElement | null>(null);
@@ -29,7 +29,9 @@ const Noise: React.FC<NoiseProps> = ({
 
         let frame = 0;
         let animationId = 0;
-        const canvasSize = 1024;
+        // Small internal buffer upscaled via `image-rendering: pixelated`.
+        // 256px keeps the grain identical while cutting per-frame work ~16x vs 1024px.
+        const canvasSize = 256;
 
         const resize = () => {
             if (!canvas) return;

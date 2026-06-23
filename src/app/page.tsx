@@ -15,35 +15,35 @@ export default function Home() {
       <LatestWork />
 
       {/* Spacer 1 */}
-      <div className="h-[15vh] w-full bg-black relative overflow-hidden">
+      <div className="h-[15vh] w-full relative overflow-hidden">
 
       </div>
 
       <Clients />
 
       {/* Spacer 2 */}
-      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+      <div className="h-[25vh] w-full relative overflow-hidden">
 
       </div>
 
       <Capabilities />
 
       {/* Spacer 3 */}
-      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+      <div className="h-[25vh] w-full relative overflow-hidden">
 
       </div>
 
       <FollowUs />
 
       {/* Spacer 4 */}
-      <div className="h-[25vh] w-full bg-black relative overflow-hidden">
+      <div className="h-[25vh] w-full relative overflow-hidden">
 
       </div>
 
       <CTA />
 
       {/* Footer Spacer (No Noise) */}
-      <div className="h-32 md:h-48 w-full bg-black" />
+      <div className="h-32 md:h-48 w-full" />
     </>
   );
 }

@@ -11,7 +11,7 @@ export default function AgencyIntro() {
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     return (
-        <section ref={ref} className="section-padding bg-black relative overflow-hidden">
+        <section ref={ref} className="section-padding relative overflow-hidden">
 
 
             <div className="container-custom relative z-10">

@@ -3,38 +3,38 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import ProcessScroll from '@/components/sections/ProcessScroll';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const services = [
     {
         id: '01',
         title: 'Production',
-        description: 'From concept to execution, we handle every aspect of physical production. Our global network of talent and resources ensures that your project is executed with the highest standards of quality and efficiency.',
+        description: 'Concept to final cut, handled end to end — crew, kit, and logistics built around your story.',
         image: '/production.jpg',
     },
     {
         id: '02',
         title: 'Photography',
-        description: 'Capturing moments that define your brand. From high-end product photography to corporate events and lifestyle shoots, we deliver visuals that tell a compelling story.',
+        description: 'Stills that carry your brand — product, lifestyle, and event work shot with a cinematic eye.',
         image: '/photography.jpg',
     },
     {
         id: '03',
         title: 'Drone Filming',
-        description: 'Elevate your perspective with breathtaking aerial cinematography. Our licensed drone pilots capture stunning 4K footage that adds cinematic scale to your productions.',
+        description: 'Licensed aerial cinematography in crisp 4K, adding scale and motion from above.',
         image: '/drone.jpg',
     },
     {
         id: '04',
         title: 'Digital Branding',
-        description: 'Building identities that resonate. We weave strategy and design to create cohesive brand experiences across all platforms, ensuring your visual presence is as powerful as your message.',
+        description: 'Identity and content that hold together across every platform — on message, on screen.',
         image: '/digitalbranding2.jpg',
     },
 ];
 
 export default function ServicesPage() {
     return (
-        <div className="bg-black text-white">
+        <div className="text-white">
             {/* 1. HERO SECTION */}
             <section className="relative h-screen w-full overflow-hidden">
                 {/* Background Video */}
@@ -100,7 +100,7 @@ export default function ServicesPage() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-6xl font-bold tracking-tighter mb-24 md:mb-32 px-12 md:px-24"
+                    className="text-4xl md:text-6xl font-bold tracking-tighter mb-24 md:mb-32 px-12 md:px-24 px-mobile"
                 >
                     We have you covered
                 </motion.h2>
@@ -109,38 +109,43 @@ export default function ServicesPage() {
                 <div className="w-full h-24 md:h-40" />
 
                 {/* Full-Width Card Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-12 md:px-24">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-12 md:px-24 px-mobile">
                     {services.map((service, index) => (
                         <motion.div
-                            key={index}
+                            key={service.id}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-[#111]"
+                            transition={{ delay: index * 0.08, duration: 0.5 }}
+                            className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-[#0d0d0d] transition-colors duration-500 hover:border-white/25"
                         >
-                            {/* Background Image */}
+                            {/* Image — full colour, gentle zoom + lift in brightness on hover */}
                             <Image
                                 src={service.image}
                                 alt={service.title}
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                                className="object-cover brightness-[0.7] transition-all duration-700 ease-out group-hover:scale-[1.04] group-hover:brightness-100"
                             />
 
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                            {/* Legibility gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/5" />
 
-                            {/* Number Badge */}
-                            <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center">
-                                <span className="text-sm font-mono text-white">{service.id}</span>
+                            {/* Catalog index + arrow (insets, not padding — survives the global reset) */}
+                            <div className="absolute inset-x-6 top-5 flex items-start justify-between">
+                                <span className="font-mono text-xs tracking-[0.2em] text-white/50">
+                                    {service.id}
+                                </span>
+                                <ArrowUpRight className="h-5 w-5 text-white/40 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
                             </div>
 
-                            {/* Content (Bottom) */}
-                            <div className="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 className="text-xl md:text-2xl font-bold mb-3 text-white">
+                            {/* Title + gold accent rule + description (flex gap, not margins) */}
+                            <div className="absolute inset-x-6 bottom-6 flex flex-col gap-3">
+                                <h3 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
                                     {service.title}
                                 </h3>
-                                <p className="text-sm text-gray-300 leading-relaxed line-clamp-4">
+                                <span className="block h-px w-8 bg-accent transition-all duration-500 group-hover:w-16" />
+                                <p className="text-sm leading-relaxed text-white/60 transition-colors duration-500 group-hover:text-white/85">
                                     {service.description}
                                 </p>
                             </div>
@@ -153,7 +158,7 @@ export default function ServicesPage() {
             <ProcessScroll />
 
             {/* SPACER FOR FOOTER VISIBILITY */}
-            <div className="h-[20vh] bg-black" />
+            <div className="h-[20vh]" />
         </div>
     );
 }

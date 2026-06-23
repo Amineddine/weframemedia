@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/moving-border';
+import Noise from '@/components/ui/noise';
 
 export default function Hero() {
     const videoRef = useRef<HTMLVideoElement>(null);
@@ -66,6 +67,12 @@ export default function Hero() {
                     </div>
                 </div>
 
+            </div>
+
+            {/* Film grain — hero only. This is the one place grain sits ON TOP of
+                a video (the site-wide grain behind content is blocked by media). */}
+            <div className="absolute inset-0 z-30 pointer-events-none">
+                <Noise patternAlpha={10} />
             </div>
         </section>
     );

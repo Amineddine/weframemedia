@@ -129,6 +129,13 @@ body {
   animation: marquee 60s linear infinite;
 }
 
+/* Logos crawl on small screens (less width to cover) — speed the loop up. */
+@media (max-width: 767px) {
+  .animate-marquee {
+    animation-duration: 28s;
+  }
+}
+
 .animate-marquee-reverse {
   animation: marquee 30s linear infinite reverse;
 }
@@ -293,4 +300,20 @@ textarea::placeholder {
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Mobile-only horizontal gutter.
+   Declared as a class so it beats the global `* { padding: 0 }` reset, and
+   zeroed at md+ so the existing desktop layout is left exactly as-is. Use it
+   to keep content off the screen edges on phones. */
+.px-mobile {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .px-mobile {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }

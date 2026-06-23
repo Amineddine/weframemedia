@@ -18,8 +18,8 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-black border-t border-white/10 text-white min-h-[40vh] flex flex-col justify-center">
-            <div className="w-full px-8 md:px-24 py-12 flex flex-col justify-between h-full flex-grow">
+        <footer className="border-t border-white/10 text-white min-h-[40vh] flex flex-col justify-center">
+            <div className="w-full px-8 md:px-24 px-mobile py-12 flex flex-col justify-between h-full flex-grow">
                 {/* Top Section */}
                 <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-4 mb-auto pt-12 items-start">
                     {/* Brand - Left */}

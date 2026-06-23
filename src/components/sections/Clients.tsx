@@ -4,15 +4,6 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 
-const clients = [
-    { name: 'Boutique de la terasse', logo: '/boutique.png' },
-    { name: 'Le Bedouin agafay', logo: '/lebedouin.png' },
-    { name: 'Ksar El Hamra', logo: '/ksarelhamra.png' },
-    { name: 'M avenue Marrakech', logo: '/Mavenue.png' },
-    { name: 'SRM Marrakech', logo: '/SRM.png' },
-    { name: 'Oberoi', logo: '/oberoi.png' },
-];
-
 export default function Clients() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-50px' });
@@ -35,9 +26,9 @@ export default function Clients() {
     const loopedClients = [...clients, ...clients, ...clients];
 
     return (
-        <section ref={ref} className="pt-24 md:pt-32 pb-24 md:pb-32 bg-black overflow-hidden relative z-20">
+        <section ref={ref} className="pt-24 md:pt-32 pb-24 md:pb-32 overflow-hidden relative z-20">
             {/* Client Names Block */}
-            <div className="w-full px-4 md:px-6 mb-12 relative z-10">
+            <div className="w-full px-4 md:px-6 px-mobile mb-12 relative z-10">
                 <div className="relative">
                     {/* Section Label */}
                     <motion.h2

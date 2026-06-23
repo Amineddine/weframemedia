@@ -6,7 +6,7 @@ import { ArrowDown } from 'lucide-react';
 
 export default function AboutPage() {
     return (
-        <div className="bg-black text-white">
+        <div className="text-white">
             {/* 1. HERO SECTION */}
             <section className="relative h-screen w-full overflow-hidden">
                 {/* Background Video */}
@@ -78,7 +78,7 @@ export default function AboutPage() {
                     Team
                 </motion.h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+                <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-8 md:gap-10">
                     {[
                         { name: 'Mustapha Achraoui', role: 'Founder & Creative Director', image: '/MUSTAPHA ACHRAOUI .jpg' },
                         { name: 'Zakaria El Ouardi', role: 'Director & Editor', image: '/ZAKARIA EL OUARDI.jpg' },
@@ -89,18 +89,19 @@ export default function AboutPage() {
                         { name: 'Yassir Boussengarne', role: 'Photographer', image: '/YASSIR.jpg' },
                         { name: 'Ilyas Sabouny', role: 'Graphic Design', image: '/ILYAS SABOUNY.jpg' },
                     ].map((member, index) => (
-                        <div key={index} className="group">
-                            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-[#111] mb-6">
+                        <div key={index} className="group flex flex-col gap-4">
+                            <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-[#111]">
                                 <Image
                                     src={member.image}
                                     alt={member.name}
                                     fill
+                                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 25vw"
                                     className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale group-hover:grayscale-0"
                                 />
                             </div>
-                            <div>
-                                <h3 className="text-xl font-bold mb-1">{member.name}</h3>
-                                <p className="text-gray-500 font-medium text-sm">{member.role}</p>
+                            <div className="flex flex-col gap-1">
+                                <h3 className="text-base md:text-xl font-bold leading-tight">{member.name}</h3>
+                                <p className="text-gray-500 font-medium text-xs md:text-sm">{member.role}</p>
                             </div>
                         </div>
                     ))}
@@ -108,7 +109,7 @@ export default function AboutPage() {
             </section>
 
             {/* SPACER FOR FOOTER */}
-            <div className="h-[20vh] bg-black" />
+            <div className="h-[20vh]" />
         </div>
     );
 }

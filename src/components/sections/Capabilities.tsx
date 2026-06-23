@@ -16,7 +16,7 @@ export default function Capabilities() {
     const [activeCapability, setActiveCapability] = useState(0);
 
     return (
-        <section className="relative h-screen min-h-[800px] w-full bg-black overflow-hidden flex flex-col justify-center mt-80 md:mt-96">
+        <section className="relative h-screen min-h-[800px] w-full overflow-hidden flex flex-col justify-center mt-80 md:mt-96">
             {/* Background Images */}
             <div className="absolute inset-0 w-full h-full">
                 <AnimatePresence mode="popLayout">
@@ -48,7 +48,7 @@ export default function Capabilities() {
                         {capabilities.map((item, index) => (
                             <Link href="/services" key={item.name} className="block w-fit">
                                 <motion.h3
-                                    className={`text-2xl md:text-2xl lg:text-[6rem] font-bold tracking-tighter leading-[1] transition-colors duration-300 cursor-pointer ${index === activeCapability ? 'text-white' : 'text-white/40 hover:text-white/60'
+                                    className={`text-5xl md:text-6xl lg:text-[6rem] font-bold tracking-tighter leading-[1] transition-colors duration-300 cursor-pointer ${index === activeCapability ? 'text-white' : 'text-white/40 hover:text-white/60'
                                         }`}
                                     onMouseEnter={() => setActiveCapability(index)}
                                 >

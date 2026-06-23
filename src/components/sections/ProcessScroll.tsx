@@ -42,7 +42,7 @@ export default function ProcessScroll() {
     const currentStep = useTransform(scrollYProgress, [0, 0.2, 0.4, 0.6, 0.8, 1], [0, 0, 1, 2, 3, 4]);
 
     return (
-        <section ref={containerRef} className="h-[400vh] relative bg-black">
+        <section ref={containerRef} className="h-[400vh] relative">
             <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
                 <div className="container-custom w-full h-full flex flex-col md:flex-row">
                     {/* Left Column - Title */}

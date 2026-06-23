@@ -5,18 +5,18 @@ import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
 
 const socialMediaItems = [
-    { type: 'video', src: '/A Magical Night in 13 Paix  ,CARTIER.mp4' },
+    { type: 'video', src: '/Gims Video 2.mp4' },
     { type: 'image', src: '/creativity.jpg' },
-    { type: 'video', src: '/Astonishing orange  ,Hermès_.mp4' },
+    { type: 'video', src: '/Raddison Blu - Gastronomic Night.mp4' },
     { type: 'image', src: '/production.jpg' },
-    { type: 'video', src: '/Beyond  Jordan Brand.mp4' },
+    { type: 'video', src: '/Seven Saints.mp4' },
     { type: 'image', src: '/post.jpg' },
-    { type: 'video', src: '/Messi and Mahomes  .Adidas.mp4' },
+    { type: 'video', src: '/Mamounia Reception Video V4.mp4' },
     { type: 'image', src: '/podcast.jpg' },
-    { type: 'video', src: '/The 2025 Met Gala  ,LOUIS VUITTON.mp4' },
+    { type: 'video', src: '/Maison Dartisant Mdf.mp4' },
     { type: 'image', src: '/motion.jpg' },
-    { type: 'video', src: '/WHY DO IT ,NIKE.mp4' },
-    { type: 'video', src: '/We Got Now  ,New Balance.mp4' },
+    { type: 'video', src: '/Gym Tour.mp4' },
+    { type: 'video', src: '/Reel 2.mp4' },
 ];
 
 export default function FollowUs() {
@@ -27,7 +27,7 @@ export default function FollowUs() {
     const loopedItems = [...socialMediaItems, ...socialMediaItems];
 
     return (
-        <section ref={ref} className="py-20 mt-80 md:mt-96 bg-black overflow-hidden relative">
+        <section ref={ref} className="py-20 mt-80 md:mt-96 overflow-hidden relative">
             <div className="container-custom relative z-10">
                 {/* Header */}
                 <motion.div
@@ -70,6 +70,7 @@ export default function FollowUs() {
                                     loop
                                     muted
                                     playsInline
+                                    preload="metadata"
                                     className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
                                 >
                                     <source src={item.src} type="video/mp4" />

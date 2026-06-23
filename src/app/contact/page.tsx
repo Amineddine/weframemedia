@@ -5,8 +5,8 @@ import { ChevronDown } from 'lucide-react';
 
 export default function ContactPage() {
     return (
-        <div className="min-h-screen bg-black text-white pb-48 md:pb-64">
-            <div className="px-6 md:px-12 lg:px-20 w-full">
+        <div className="min-h-screen text-white pb-48 md:pb-64">
+            <div className="px-6 md:px-12 lg:px-20 px-mobile w-full">
 
                 {/* 🔒 NAVBAR OFFSET — DO NOT REMOVE */}
                 {/* This guarantees content starts BELOW the fixed navbar */}

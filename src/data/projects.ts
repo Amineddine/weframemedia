@@ -73,14 +73,13 @@ export const projects = [
         name: 'Mysk Marrakech',
         tagline: 'Real Estate',
         video: 'https://player.vimeo.com/video/739298377?h=3619a03771',
-        gallery: ['/V4 COACHES.mp4', '/Reel 2.mp4'],
         href: '/works/10',
-        client: 'Fitlab',
+        client: 'Mysk Marrakech',
         year: '2025',
-        type: 'Commercial',
-        description: 'An energetic gym tour for Fitlab, showcasing state-of-the-art equipment and the motivating atmosphere of the facility.',
+        type: 'Real Estate',
+        description: 'A promotional film for Mysk Marrakech, showcasing bespoke luxury villas in Marrakech — designed to your taste to bring the home of your dreams to life.',
         credits: {
-            agency: 'Fitlab',
+            agency: 'Mysk Marrakech',
             director: 'Unknown',
             editor: 'Unknown',
             photographer: 'Unknown'

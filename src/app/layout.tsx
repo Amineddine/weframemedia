@@ -21,10 +21,15 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/WFM.png",
-    shortcut: "/WFM.png",
-    apple: "/WFM.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -35,8 +40,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased bg-background text-foreground`}>
-        <div className="fixed inset-0 z-[9999] pointer-events-none">
-          <Noise />
+        {/* Site-wide film grain — sits BEHIND content. Section backgrounds are
+            transparent so the grain shows through behind text/empty areas, while
+            opaque media (videos, images) naturally blocks it. The homepage hero
+            is the exception: it paints its own grain on top of its video. */}
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <Noise patternAlpha={6} />
         </div>
         <Navbar />
         <main>{children}</main>
